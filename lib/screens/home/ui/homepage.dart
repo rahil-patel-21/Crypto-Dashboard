@@ -1,9 +1,4 @@
-//Flutter Imports
-import 'dart:io';
-
-import 'package:flutter/material.dart';
-import 'package:webstabledemo/utilities/constants/resources.dart';
-import 'package:webstabledemo/utilities/theme/app_theme.dart';
+import 'package:webstabledemo/screens/home/references/home_references.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -14,6 +9,11 @@ class HomePage extends StatelessWidget {
           child: Row(
         children: [
           if (constrains.maxWidth >= 1000) _leftSideBar(context),
+          Container(
+            width: 500,
+            height: MediaQuery.of(context).size.height,
+            color: Colors.white,
+          )
         ],
       ));
     }));
@@ -27,9 +27,22 @@ class HomePage extends StatelessWidget {
       child: Column(
         children: [
           Text(
-            'TechFinex',
+            appName,
             style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
           ),
+          Expanded(
+              child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Column(
+                children: [
+                  SideTabButton(title: 'DashBoard', selectedItem: 'DashBoard'),
+                  SideTabButton(title: 'Wallet', selectedItem: 'DashBoard'),
+                ],
+              ),
+              Text('Logout'),
+            ],
+          ))
         ],
       ),
     );
